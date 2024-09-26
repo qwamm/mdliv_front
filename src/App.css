@@ -1,11 +1,54 @@
 #root {}
 
-.title {
-  color : #535bf2;
-  padding-left: 350px;
-  height: 1000px;
+.auth {
+  position : absolute;
+  left : 680px;
+  bottom: 400px;
 }
 
+.form {
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 10px;
+  display:grid;
+}
+
+.topbar {
+  position: absolute;
+  right: 1050px;
+  bottom: 675px;
+}
+.subbutton {
+  display: inline-block;
+  border: 2px solid black;
+  background-color: white;
+   color: black;
+}
+
+.submit {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-size:10px;
+}
+
+.star {
+  position: absolute;
+  bottom: 660px;
+}
+
+.title {
+  position: absolute;
+  left: 1350px;
+  bottom: 675px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+.points {
+  float: right;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

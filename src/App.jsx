@@ -1,13 +1,15 @@
-import { useState } from 'react'
 import './App.css'
+import Points from './components/Points.jsx'
+import TopBar from './components/TopBar.jsx'
+import Authorization from './components/Authorization.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <h2 className="title">Геймификация разработки</h2>
-    </>
+    return (
+        <div>
+            <Points/>
+            <TopBar/>
+            <Authorization/>
+      </div>
   )
 }
 

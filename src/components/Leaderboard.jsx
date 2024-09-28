@@ -12,8 +12,8 @@ export default function Leaderboard(pros) {
     return (
         <div>
             <h2 className="leaderboard">Общий рейтинг</h2>
-            <DataTable value = {data} tableStyle={{ minWidth: '50rem', position : 'absolute', bottom: '200px',
-            left: '500px'}} responsiveLayout="scroll">
+            <DataTable value = {data} tableStyle={{ minWidth: '50rem', position : 'absolute', bottom: '50px',
+            left: '400px'}} responsiveLayout="scroll">
                 <Column field="id" header="ID"></Column>
                 <Column field="name" header="ФИО"></Column>
                 <Column field="credits" header="Кредиты" sortable></Column>

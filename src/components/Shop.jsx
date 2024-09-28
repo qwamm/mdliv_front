@@ -18,6 +18,27 @@ export default function Shop() {
             price: 29990,
             image:
                 'https://cs14.pikabu.ru/post_img/big/2023/01/01/9/1672583613174356185.jpg'
+        },
+        {
+            id: 3,
+            name: '2-я лаба по ТА',
+            price: 9999999999,
+            image:
+                'https://intuit.ru/EDI/20_07_20_2/1595197216-9970/tutorial/369/objects/1/files/01-02.gif'
+        },
+        {
+            id: 4,
+            name: 'iPhone 16 Pro Max',
+            price: 7000,
+            image:
+                'https://www.iphones.ru/wp-content/uploads/2024/09/iphone-16-pro-models.jpg'
+        },
+        {
+            id: 5,
+            name: 'отпуск 30 дней',
+            price: 947325,
+            image:
+                'https://www.h2osport.ru/upload/ammina.optimizer/jpg/q80/upload/medialibrary/c96/c96ac097cae775ecf7a9a1127f09150b.jpg'
         }
     ])
     const [cartCourses, setCartCourses] = useState([]);

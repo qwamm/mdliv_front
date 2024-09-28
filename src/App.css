@@ -1,5 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 #root {}
 
 .gitLog {
@@ -24,7 +24,7 @@
 .leaderboard {
   position: absolute;
   right: 725px;
-  bottom: 650px;
+  bottom: 500px;
 }
 
 .form {
@@ -111,9 +111,8 @@ body {
 }
 
 .App-header {
-  background-color: #6cc24a;
   padding: 20px;
-  color: white;
+  color: black;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }

@@ -1,11 +1,12 @@
 import '../App.css'
 import {useState} from "react";
-
-export default function Authorization()
+import {useNavigate} from "react-router-dom";
+export default function Authorization(pros)
 {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const navigate = useNavigate()
     // Handling the email change
     const handleLogin = (e) => {
         setLogin(e.target.value);
@@ -40,11 +41,12 @@ export default function Authorization()
             .catch((err) => {
                 console.log(err.message);
             });
+        pros.setUsername(login)
+        navigate('/')
     };
-
     return (
         <div className="auth">
-            <h2 style = {{position : "absolute", left: "25px", bottom : "110px"}}>Авторизация</h2>
+            <h2 style = {{position : "absolute", left: "25px", bottom : "140px"}}>Авторизация</h2>
             <form className="form">
                 <input className="form" type="text" placeholder="Логин" onChange={handleLogin} id="login"/>
                 <input className="form" type="text" placeholder="Пароль" onChange={handlePassword} id="password"/>

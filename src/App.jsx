@@ -1,16 +1,20 @@
 import './App.css'
-import Points from './components/Points.jsx'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import TopBar from './components/TopBar.jsx'
-import Authorization from './components/Authorization.jsx'
+import Authorization from "./components/Authorization.jsx";
+import Leaderboard from "./components/Leaderboard.jsx";
+import Shop from "./components/Shop.jsx";
 
-function App() {
-    return (
-        <div>
-            <Points/>
-            <TopBar/>
-            <Authorization/>
-      </div>
-  )
+export default function App() {
+        return (
+            <div>
+                <Routes>
+                    <Route path="/" element = {<TopBar/>}></Route>
+                    <Route path = "/auth" element = {<Authorization/>}></Route>
+                    <Route path="/lb" element = {<Leaderboard/>}></Route>
+                    <Route path="/shop" element = {<Shop/>}></Route>
+                </Routes>
+            </div>
+        )
 }
 
-export default App

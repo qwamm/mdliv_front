@@ -1,15 +1,14 @@
 import '../App.css'
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import * as React from "react";
-import TextField from "@mui/material/TextField";
-import {DataGrid} from "@mui/x-data-grid";
-import {Typography} from "@mui/material";
+import TextField from '@mui/material/TextField'
+import { DataGrid } from '@mui/x-data-grid';
 
-export default function Leaderboard(pros) {
+export default function MakeTeam(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -34,19 +33,19 @@ export default function Leaderboard(pros) {
             width: 160,
         },
         {
-            field: 'Rate',
-            headerName: 'Rate',
+            field: 'CoffeCoins',
+            headerName: 'Coffee Coins',
             width: 160,
         },
     ];
     const rows = [
-        {id: 1, fullName: 'Xi', Rate: 1374},
-        {id: 2, fullName: 'Steven', Rate: 984},
-        {id: 3, fullName: 'Donald', Rate: 2348}
+        {id: 1, fullName: 'Xi', CoffeCoins: 1374},
+        {id: 2, fullName: 'Steven', CoffeCoins: 984},
+        {id: 3, fullName: 'Donald', CoffeCoins: 2348}
     ]
     return (
         <div>
-            <li><a href="#" onClick={handleOpen}>Общий рейтинг</a></li>
+            <li><a href="#" onClick={handleOpen}>Создать команду</a></li>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -54,9 +53,7 @@ export default function Leaderboard(pros) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Общий рейтинг
-                    </Typography>
+                    <TextField id="outlined-basic" label="Название команды" variant="outlined"/>
                     <DataGrid
                         rows={rows}
                         columns={columns}
@@ -71,6 +68,9 @@ export default function Leaderboard(pros) {
                         checkboxSelection
                         disableRowSelectionOnClick
                     />
+                    <Button variant="contained" size="medium">
+                        Создать команду
+                    </Button>
                 </Box>
             </Modal>
         </div>

@@ -1,8 +1,9 @@
 import '../../App.css'
 import styles from './MainPage.module.css'
-import star from "../../pictures/star.png";
 import Profile from '../Profile.jsx'
+import MakeTeam from "../MakeTeam.jsx";
 import {useNavigate} from "react-router-dom";
+import Leaderboard from "../Leaderboard.jsx";
 export default function MainPage(pros) {
     const navigate = useNavigate();
     const lb = () => {navigate('/lb');}
@@ -19,8 +20,8 @@ export default function MainPage(pros) {
             alert("Вы не авторизованы. Для просмотра списка организаций требуется авторизация.")
         }
     }
-    const org_list = () => {
-
+    const make_team = () => {
+        navigate('/organizations/make_team');
     }
     if (!pros.org) {
         return (
@@ -31,7 +32,7 @@ export default function MainPage(pros) {
                     <nav>
                         <ul>
                             <li><a href="#" onClick={main_page}>Главная</a></li>
-                            <li><a href="#" onClick={lb}>Общий рейтинг</a></li>
+                            <Leaderboard></Leaderboard>
                             <li><a href="#" onClick={shop}>Магазин мерча</a></li>
                             <li><a href="#" onClick={orgs}>Организации</a></li>
                             <Profile username={pros.username} setUsername={pros.setUsername}></Profile>
@@ -50,10 +51,9 @@ export default function MainPage(pros) {
                     <nav>
                         <ul>
                             <li><a href="#" onClick={main_page}>Главная</a></li>
-                            <li><a href="#" onClick={lb}>Общий рейтинг</a></li>
+                            <Leaderboard></Leaderboard>
                             <li><a href="#" onClick={shop}>Магазин мерча</a></li>
-                            <li><a href="#" onClick={org_list}>Список организаций</a></li>
-                            <li><a href="#" onClick={make_team}>Создать команду</a></li>
+                            <MakeTeam></MakeTeam>
                             <Profile username={pros.username} setUsername={pros.setUsername}></Profile>
                             <></>
                         </ul>

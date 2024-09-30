@@ -6,6 +6,11 @@
   background-image : url('./pictures/pikachu.jpg')
 }
 
+.orgs {
+  margin-left: 600px;
+  margin-bottom: 600px;
+}
+
 body{
   background-image : none
 }
@@ -35,8 +40,9 @@ body{
 
 .leaderboard {
   position: absolute;
-  right: 725px;
+  right: 650px;
   bottom: 500px;
+  background-color: white;
 }
 
 .form {

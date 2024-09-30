@@ -4,16 +4,19 @@ import TopBar from './components/TopBar.jsx'
 import Authorization from "./components/Authorization.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 import Shop from "./components/Shop.jsx";
+import MainPage from "./components/MainPage/MainPage.jsx";
 import {useState} from "react";
 
 export default function App() {
         const [username, setUsername] = useState("Авторизация");
-        console.log("FKJBSDJGB")
+        const [points, setPoints] = useState(0);
+        console.log(username)
         return (
             <div>
-                <TopBar username = {username} setUsername = {setUsername}></TopBar>
+                {/*<TopBar username = {username} setUsername = {setUsername}></TopBar>*/}
+                <MainPage points = {points} setPoints = {setPoints} username = {username} setUsername = {setUsername}></MainPage>
                 <Routes>
-                    <Route path = "/auth" element = {<Authorization setUsername = {setUsername}></Authorization>}></Route>
+                    <Route path = "/login" element = {<Authorization setUsername = {setUsername} setPoints = {setPoints}></Authorization>}></Route>
                     <Route path="/lb" element = {<Leaderboard/>}></Route>
                     <Route path="/shop" element = {<Shop/>}></Route>
                 </Routes>

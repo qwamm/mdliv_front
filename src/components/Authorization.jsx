@@ -19,15 +19,15 @@ export default function Authorization(pros)
         setSubmitted(false);
     };
 
-    // Handling the form submission
-    const handleSubmit = (e) => {
+    const handleRegistration = (e) => {
         e.preventDefault();
         setSubmitted(true);
-        fetch('http://localhost:8080', {
+        fetch('http://localhost:8080/api/auth/registration', {
             method: 'POST',
             body: JSON.stringify({
-                'login' : login,
-                'password': password
+                'username' : login,
+                'password': password,
+                'password_again': password
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -42,16 +42,56 @@ export default function Authorization(pros)
                 console.log(err.message);
             });
         pros.setUsername(login)
+        pros.setPoints(3041)
         navigate('/')
+    };
+
+    // Handling the form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+        let is_correct = true
+        fetch('http://localhost:8080/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                'username' : login,
+                'password': password,
+                'remember_me': true
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data.message !== "OK")
+                {
+                    alert("Неверный логин или пароль")
+                    is_correct = false;
+                }
+                else {
+                    pros.setUsername(login)
+                    pros.setPoints(3041)
+                    navigate('/')
+                }
+                // Handle data
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
     };
     return (
         <div className="auth">
-            <h2 style = {{position : "absolute", left: "25px", bottom : "140px"}}>Авторизация</h2>
+            <h2 style = {{position : "absolute", left: "25px", bottom : "160px"}}>Авторизация</h2>
             <form className="form">
                 <input className="form" type="text" placeholder="Логин" onChange={handleLogin} id="login"/>
                 <input className="form" type="text" placeholder="Пароль" onChange={handlePassword} id="password"/>
                 <button type="submit" className="submit" onClick={handleSubmit}>
                     Submit
+                </button>
+                <button type="submit" className="submit" onClick={handleRegistration}>
+                    Registration
                 </button>
             </form>
         </div>

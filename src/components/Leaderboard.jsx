@@ -1,10 +1,8 @@
 import '../App.css'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import {useState} from "react";
 
 export default function Leaderboard(pros) {
-    const [products, setProducts] = useState([]);
    const data = [
        {id: 1, name: 'Иванов Иван Иваныч', credits: 67},
        {id: 2, name: "Товарищ Xi", credits: 999999999}

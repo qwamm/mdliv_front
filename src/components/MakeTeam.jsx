@@ -10,8 +10,34 @@ import { DataGrid } from '@mui/x-data-grid';
 
 export default function MakeTeam(props) {
     const [open, setOpen] = React.useState(false);
+    const [open_org, setOpen_org] = React.useState(false);
+    const [org_name, setName] = React.useState("");
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+    }
+    const handleOpen_org = () => {
+        setOpen_org(true)
+    }
+    const handleClose_org = () => {
+        fetch('http://localhost/api/organisation/', {
+            method: 'POST',
+            body: JSON.stringify ({
+                name: org_name
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+        setOpen_org(false)
+    }
     const style = {
         position: 'absolute' ,
         top: '50%',
@@ -46,6 +72,23 @@ export default function MakeTeam(props) {
     return (
         <div>
             <li><a href="#" onClick={handleOpen}>Создать команду</a></li>
+            <li><a href="#" onClick={handleOpen_org}>Создать организацию</a></li>
+            <Modal
+                open={open_org}
+                onClose={handleClose_org}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Button onClick={handleClose_org} variant="contained" size="medium">
+                        Создать организацию
+                    </Button>
+                    <TextField id="outlined-basic" onChange={(e) => {
+                        setName(e.target.value)
+                        props.setName(e.target.value)
+                    }} label="Название организации" variant="outlined"/>
+                </Box>
+            </Modal>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -53,7 +96,9 @@ export default function MakeTeam(props) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <TextField id="outlined-basic" label="Название команды" variant="outlined"/>
+                    <TextField id="outlined-basic" onChange={(e) => {
+                        props.setName(e.target.value)
+                    }} label="Название команды" variant="outlined"/>
                     <DataGrid
                         rows={rows}
                         columns={columns}
@@ -67,8 +112,15 @@ export default function MakeTeam(props) {
                         pageSizeOptions={[3]}
                         checkboxSelection
                         disableRowSelectionOnClick
+                        onRowSelectionModelChange={(e) => {
+                            let res = []
+                            for (let i = 0; i < e.length; i++) {
+                                res.push(rows[e[i] - 1].fullName)
+                            }
+                            props.setRows(res)
+                        }}
                     />
-                    <Button variant="contained" size="medium">
+                    <Button onClick={handleClose} variant="contained" size="medium">
                         Создать команду
                     </Button>
                 </Box>

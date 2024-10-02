@@ -22,7 +22,7 @@ export default function Authorization(pros)
     const handleRegistration = (e) => {
         e.preventDefault();
         setSubmitted(true);
-        fetch('http://localhost:8080/api/auth/registration', {
+        fetch('http://localhost/api/auth/registration', {
             method: 'POST',
             body: JSON.stringify({
                 'username' : login,
@@ -30,7 +30,8 @@ export default function Authorization(pros)
                 'password_again': password
             }),
             headers: {
-                'Content-type': 'application/json; charset=UTF-8',
+                'Content-type': 'application/json',
+                'accept': 'application/json'
             },
         })
             .then((response) => response.json())
@@ -49,9 +50,7 @@ export default function Authorization(pros)
     // Handling the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        let is_correct = true
-        fetch('http://localhost:8080/api/auth/login', {
+        fetch('/api/auth/login', {
             method: 'POST',
             body: JSON.stringify({
                 'username' : login,
@@ -59,7 +58,8 @@ export default function Authorization(pros)
                 'remember_me': true
             }),
             headers: {
-                'Content-type': 'application/json; charset=UTF-8',
+                'Content-type': 'application/json',
+                'accept': 'application/json'
             },
         })
             .then((response) => response.json())
@@ -68,7 +68,6 @@ export default function Authorization(pros)
                 if (data.message !== "OK")
                 {
                     alert("Неверный логин или пароль")
-                    is_correct = false;
                 }
                 else {
                     pros.setUsername(login)
@@ -80,6 +79,7 @@ export default function Authorization(pros)
             .catch((err) => {
                 console.log(err.message);
             });
+        setSubmitted(true);
     };
     return (
         <div className="auth">

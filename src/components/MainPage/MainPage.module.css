@@ -2,13 +2,10 @@ header img {
     height: 80px;
     margin-left: 40px;
 }
+
 body {
-    height: 125vh;
-    background-image: url('../../pictures/pikachu.jpg');
+    background-image: url('../../pictures/pikachu_blur.jpg');
     background-size: cover;
-    font-family: sans-serif;
-    margin-top: 80px;
-    padding: 30px;
 }
 
 main {

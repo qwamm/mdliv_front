@@ -1,8 +1,7 @@
-# React + Vite
+# Геймификация разработки игр(фронтенд)
+Клиентская часть проекта состоит из 2-х составных частей: фронтенд и прокси. Подробнее о запуске серверной части можно прочитать в README соответствующего репозитория: "https://github.com/qwamm/MDLIV_nuclear_hackaton".
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Запуск
+1. В корневой папке проекта прописать команду `npm i` для установки зависимостей, а затем `npm run dev`.
+2. Для запуска прокси-сервера перейти в каталог proxy и вновь прописать `npm i`, а затем `node .`.
+3. В браузере Chrome открыть сайт http://localhost
